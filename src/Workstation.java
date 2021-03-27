@@ -69,7 +69,7 @@ public class Workstation implements Runnable{
 
     private void makeProduct(){
         try {
-            Thread.sleep((long) (productionTimes.remove(0) * 1L)); //* 1000L));
+            Thread.sleep((long) (productionTimes.remove(0) * 20L));
             //  System.out.println("Produced: " + productType.name());
             productsProduced ++;
             for (ComponentType component: bufferMap.keySet()) {

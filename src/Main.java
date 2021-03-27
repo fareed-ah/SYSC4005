@@ -34,6 +34,7 @@ public class Main implements Runnable{
         inspector2 = new Inspector(inspector2Data, inspector2Workstation);
         inspector2Thread = new Thread(inspector2);
     }
+
     public static void main(String[]  args){
        Thread mainThread = new Thread(new Main());
        mainThread.start();
@@ -93,15 +94,23 @@ public class Main implements Runnable{
 
         long endTime = System.currentTimeMillis();
 
+        int productsProduced = (workstation1.getProductsProduced()
+                + workstation2.getProductsProduced()
+                + workstation3.getProductsProduced());
+        double totalTime = (endTime - startTime) /1000D;
         System.out.println("-------Simulation Complete----------");
-        System.out.println("Simulation duration: " + (endTime - startTime));
-        System.out.println("Inspector 1 Blocked Time: " + inspector1.getBlockedTime());
-        System.out.println("Inspector 2 Blocked Time: " + inspector2.getBlockedTime());
+        System.out.println("Simulation duration: " +  totalTime + "s");
+        System.out.println("Inspector 1 Blocked Time: " + inspector1.getBlockedTime() + "s");
+        System.out.println("Inspector 2 Blocked Time: " + inspector2.getBlockedTime() +"s");
+
         System.out.println("Workstation 1 Production: " + workstation1.getProductsProduced());
         System.out.println("Workstation 2 Production: " + workstation2.getProductsProduced());
         System.out.println("Workstation 3 Production: " + workstation3.getProductsProduced());
-        System.out.println("Total Production: " + (workstation1.getProductsProduced()
-                + workstation2.getProductsProduced()
-                + workstation3.getProductsProduced()));
+
+        System.out.println("Workstation 1 Throughput: " + workstation1.getProductsProduced() / totalTime + " products/s");
+        System.out.println("Workstation 2 Throughput: " + workstation2.getProductsProduced() / totalTime + " products/s");
+        System.out.println("Workstation 3 Throughput: " + workstation3.getProductsProduced() / totalTime + " products/s");
+
+        System.out.println("Total Production: " + productsProduced);
     }
 }

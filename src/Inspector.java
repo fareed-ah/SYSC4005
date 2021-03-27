@@ -19,7 +19,7 @@ public class Inspector implements Runnable {
             ComponentType component = getRandomComponent();
 
             try {
-                Thread.sleep((long) (componentTypes.get(component).remove(0) * 1L)); //* 1000L));
+                Thread.sleep((long) (componentTypes.get(component).remove(0) * 20L)); //* 1000L));
 
                 Workstation workstation = findBuffer(component);
                 if(workstation == null) {
@@ -57,7 +57,7 @@ public class Inspector implements Runnable {
     }
 
     public double getBlockedTime() {
-        return blockedTime;
+        return blockedTime /1000;
     }
 
     public synchronized void doStop() {
