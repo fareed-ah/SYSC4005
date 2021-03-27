@@ -39,6 +39,19 @@ public class Main implements Runnable{
        mainThread.start();
     }
 
+    private static List<Double> randomVariateGeneration(List<Double> input){
+        Random rand = new Random();
+        List<Double> rng = new ArrayList<>();
+        double average = input
+                .stream()
+                .mapToDouble(a -> a)
+                .average().orElse(0.0);
+        for(int i= 0; i< 300; i++){
+            rng.add((-1*average) * (Math.log(1-rand.nextDouble())));
+        }
+        return rng;
+    }
+
     private static List<Double> readData(File file){
         Scanner scnr = null;
         List<Double> data = new ArrayList<>();
@@ -52,7 +65,7 @@ public class Main implements Runnable{
             Double time = scnr.nextDouble();
             data.add(time);
         }
-        return data;
+        return randomVariateGeneration(data);
     }
 
     @Override
