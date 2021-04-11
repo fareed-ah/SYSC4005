@@ -1,32 +1,37 @@
 public class Component {
 
-    public enum ComponentType{
-        COMPONENT_1,
-        COMPONENT_2,
-        COMPONENT_3,
+    private double workstationBufferArrivalTime = 0;
+    private double workstationBufferDepartureTime = 0;
+    private double totalWaitTime = 0;
+    public Component(double workstationBufferArrivalTime){
+        this.workstationBufferArrivalTime = workstationBufferArrivalTime;
     }
 
-    private ComponentType type;
-    private double inspectionTime;
-
-    public Component(ComponentType type, double inspectionTime){
-        this.type = type;
-        this.inspectionTime = inspectionTime;
+    public double getTotalWaitTime() {
+        return totalWaitTime;
     }
 
-    public ComponentType getType() {
-        return type;
+    public void setTotalWaitTime(double totalWaitTime) {
+        this.totalWaitTime = totalWaitTime;
     }
 
-    public void setType(ComponentType type) {
-        this.type = type;
+    public void incTotalWaitTime(double totalWaitTime) {
+        this.totalWaitTime += totalWaitTime;
     }
 
-    public double getInspectionTime() {
-        return inspectionTime;
+    public double getWorkstationBufferArrivalTime() {
+        return workstationBufferArrivalTime;
     }
 
-    public void setInspectionTime(double inspectionTime) {
-        this.inspectionTime = inspectionTime;
+    public void setWorkstationBufferArrivalTime(double workstationArrivalTime) {
+        this.workstationBufferArrivalTime = workstationArrivalTime;
+    }
+
+    public double getWorkstationBufferDepartureTime() {
+        return workstationBufferDepartureTime;
+    }
+
+    public void setWorkstationBufferDepartureTime(double workstationBufferDepartureTime) {
+        this.workstationBufferDepartureTime = workstationBufferDepartureTime;
     }
 }
